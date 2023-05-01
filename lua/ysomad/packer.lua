@@ -8,12 +8,29 @@ return require('packer').startup(function(use)
     requires = { { 'nvim-lua/plenary.nvim' } }
   }
 
-  use({
+  use {
     'aktersnurra/no-clown-fiesta.nvim',
-    config = function() vim.cmd.colorscheme('no-clown-fiesta') end
-  })
+    config = function()
+      require('no-clown-fiesta').setup({
+        transparent = true
+      })
 
-  use({'nvim-treesitter/nvim-treesitter', run = ':TSUpdate' })
+      vim.cmd.colorscheme('no-clown-fiesta')
+
+      vim.api.nvim_set_hl(0, 'Normal', { bg = 'none' })
+      vim.api.nvim_set_hl(0, 'NormalFloat', { bg = 'none' })
+    end
+  }
+
+  use 'nvim-tree/nvim-web-devicons'
+
+  use {
+    'nvim-treesitter/nvim-treesitter',
+    run = function()
+      local ts_update = require('nvim-treesitter.install').update({ with_sync = true })
+      ts_update()
+    end
+  }
   use 'nvim-treesitter/nvim-treesitter-context'
 
   use('ray-x/lsp_signature.nvim')
@@ -63,10 +80,13 @@ return require('packer').startup(function(use)
     end
   }
 
-  -- use {
-  --   'fatih/vim-go',
-  --   run = ':GoUpdateBinaries'
-  -- }
-  -- use 'github/copilot.vim'
+  use {
+    'ray-x/go.nvim',
+    config = function()
+      require('go').setup()
+    end
+  }
+
+  use 'ray-x/guihua.lua'
 
 end)
