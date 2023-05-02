@@ -33,7 +33,6 @@ return require('packer').startup(function(use)
   }
   use 'nvim-treesitter/nvim-treesitter-context'
 
-  use('ray-x/lsp_signature.nvim')
   use('mbbill/undotree')
 
   use {
@@ -71,6 +70,16 @@ return require('packer').startup(function(use)
       { 'L3MON4D3/LuaSnip' },
       { 'rafamadriz/friendly-snippets' },
     }
+  }
+
+  use{
+    'ray-x/lsp_signature.nvim',
+    config = function()
+      require('lsp_signature').setup({
+        floating_window = false,
+        hint_prefix = "H: "
+      })
+    end
   }
 
   use {
