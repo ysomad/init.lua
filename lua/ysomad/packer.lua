@@ -101,4 +101,13 @@ return require('packer').startup(function(use)
   use 'ray-x/guihua.lua'
   use 'christoomey/vim-tmux-navigator'
 
+  use {
+    'epwalsh/obsidian.nvim',
+    config = function()
+      require('obsidian').setup({
+        dir = '/Users/ysomad/Documents/vault',
+        notes_subdir = "notes"
+      })
+    end,
+  }
 end)
