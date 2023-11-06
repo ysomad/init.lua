@@ -1,18 +1,20 @@
--- greates remaps ever (yoinked from primeagen)
-vim.keymap.set("n", "<leader>x", "<cmd>!chmod +x %<CR>", { silent = true })
-vim.keymap.set("x", "<leader>p", [["_dP]])
-vim.keymap.set({ "n", "v" }, "<leader>d", [["_d]])
+-- utils
+vim.keymap.set("n", "<leader>s", [[:%s/\<<C-r><C-w>\>/<C-r><C-w>/gI<Left><Left><Left>]], { desc = "Rename in curr buffer" })
+vim.keymap.set("n", "<leader>x", "<cmd>!chmod +x %<CR>", { desc = "chmod +x curr file" })
+vim.keymap.set("n", "<leader>pv", vim.cmd.Ex, { desc = "Open netrw" })
 
--- yank into +y buffer
-vim.keymap.set({ "n", "v" }, "<leader>y", [["+y]])
-vim.keymap.set("n", "<leader>Y", [["+Y]])
-
-vim.keymap.set("n", "<leader>pv", vim.cmd.Ex)
-vim.keymap.set('n', 'Q', '<nop>')
+-- giga yankers and pasters
+vim.keymap.set("x", "<leader>p", [["_dP]], { desc = "Paste from system clipboard" })
+vim.keymap.set({ "n", "v" }, "<leader>d", [["_d]], { desc = "Del and yank into system clipboard" })
+vim.keymap.set({ "n", "v" }, "<leader>y", [["+y]], { desc = "Yank into system clipboard" })
+vim.keymap.set("n", "<leader>Y", [["+Y]], { desc = "Yank curr line into system clipboard" })
 
 -- better indenting
-vim.keymap.set('v', '<', '<gv')
-vim.keymap.set('v', '>', '>gv')
+vim.keymap.set('v', '<', '<gv', { desc = "Indent v-block to right" })
+vim.keymap.set('v', '>', '>gv', { desc = "Indent v-block to left" })
+
+-- disable Q
+vim.keymap.set('n', 'Q', '<nop>')
 
 -- disable arrows
 vim.keymap.set({ 'n', 'i' }, '<up>', '')
@@ -28,6 +30,4 @@ vim.keymap.set('n', '<C-u>', '<C-u>zz')
 vim.keymap.set('n', 'n', 'nzzzv')
 vim.keymap.set('n', 'N', 'Nzzzv')
 
--- rename in current buffer
-vim.keymap.set("n", "<leader>s", [[:%s/\<<C-r><C-w>\>/<C-r><C-w>/gI<Left><Left><Left>]])
-vim.keymap.set("n", "<leader>x", "<cmd>!chmod +x %<CR>", { silent = true })
+
