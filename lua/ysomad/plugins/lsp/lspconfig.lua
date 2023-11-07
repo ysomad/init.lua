@@ -63,14 +63,19 @@ return {
 
     -- Change the Diagnostic symbols in the sign column (gutter)
     -- (not in youtube nvim video)
-    local signs = { Error = "E ", Warn = "W ", Hint = "H ", Info = "I " }
-    for type, icon in pairs(signs) do
-      local hl = "DiagnosticSign" .. type
-      vim.fn.sign_define(hl, { text = icon, texthl = hl, numhl = "" })
-    end
+    -- local signs = { Error = "E ", Warn = "W ", Hint = "H ", Info = "I " }
+    -- for type, icon in pairs(signs) do
+    --   local hl = "DiagnosticSign" .. type
+    --   vim.fn.sign_define(hl, { text = icon, texthl = hl, numhl = "" })
+    -- end
 
     -- configure typescript server with plugin
     lspconfig["tsserver"].setup({
+      capabilities = capabilities,
+      on_attach = on_attach,
+    })
+
+    lspconfig["bashls"].setup({
       capabilities = capabilities,
       on_attach = on_attach,
     })
@@ -86,11 +91,36 @@ return {
       on_attach = on_attach,
       settings = {
         gopls = {
+          directoryFilters = { "-.git", "-node_modules" },
           analyses = {
             unusedparams = true,
+            unusedvariable = true,
+            unusedwrite = true,
+            fieldalignment = true,
+            shadow = true,
+            nilness = true,
+            useany = true,
+          },
+          codelenses = {
+            gc_details = true,
+            generate = true,
+            run_govulncheck = true,
+            test = true,
+            tidy = true,
+            upgrade_dependency = true,
+          },
+          hints = {
+            assignVariableTypes = true,
+            compositeLiteralFields = true,
+            compositeLiteralTypes = true,
+            constantValues = true,
+            functionTypeParameters = true,
+            parameterNames = true,
+            rangeVariableTypes = true,
           },
           staticcheck = true,
           gofumpt = true,
+          semanticTokens = true,
         },
       },
     })

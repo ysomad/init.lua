@@ -32,6 +32,6 @@ return {
       builtin.grep_string({ search = vim.fn.input('Grep > ') });
     end, { desc = "Grep string" })
     vim.keymap.set('n', '<leader>fh', builtin.help_tags, { desc = "List help tags" })
-    vim.keymap.set('n', '<leader>fx', builtin.treesitter, { desc = "List treesitter funcs, vars"})
+    vim.keymap.set('n', '<leader>fx', builtin.treesitter, { desc = "List tresitter funcs, vars"})
   end
 }
