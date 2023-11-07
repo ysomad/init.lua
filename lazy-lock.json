@@ -18,7 +18,7 @@
   "mason.nvim": { "branch": "main", "commit": "eabf6d347fdb75be360d4c0ced1145670a171453" },
   "neotest": { "branch": "master", "commit": "901891484db3d46ce43d56871273dc7d40621356" },
   "neotest-go": { "branch": "main", "commit": "1a15e1136db43775214a3e7a598f8930c29c94b7" },
-  "no-clown-fiesta.nvim": { "branch": "master", "commit": "6ab6e41188b8eab4e9ae5851b7b884920e54d004" },
+  "no-clown-fiesta.nvim": { "branch": "master", "commit": "cba991db027d696d99b15e6d3ea6f29f59ad2963" },
   "nvim-cmp": { "branch": "main", "commit": "0b751f6beef40fd47375eaf53d3057e0bfa317e4" },
   "nvim-colorizer.lua": { "branch": "master", "commit": "dde3084106a70b9a79d48f426f6d6fec6fd203f7" },
   "nvim-lspconfig": { "branch": "master", "commit": "37457f268af5cd6765e589b0dcd7cbd192d8da00" },
