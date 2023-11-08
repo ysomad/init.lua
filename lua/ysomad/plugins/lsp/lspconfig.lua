@@ -5,10 +5,7 @@ return {
     "hrsh7th/cmp-nvim-lsp"
   },
   config = function()
-    -- import lspconfig plugin
     local lspconfig = require("lspconfig")
-
-    -- import cmp-nvim-lsp plugin
     local cmp_nvim_lsp = require("cmp_nvim_lsp")
 
     local opts = { noremap = true, silent = true }
@@ -17,7 +14,6 @@ return {
 
       local builtin = require("telescope.builtin")
 
-      -- set keybinds
       opts.desc = "Show LSP references"
       vim.keymap.set("n", "gR", builtin.lsp_references, opts) -- show definition, references
 
@@ -69,7 +65,6 @@ return {
     --   vim.fn.sign_define(hl, { text = icon, texthl = hl, numhl = "" })
     -- end
 
-    -- configure typescript server with plugin
     lspconfig["tsserver"].setup({
       capabilities = capabilities,
       on_attach = on_attach,
@@ -80,7 +75,6 @@ return {
       on_attach = on_attach,
     })
 
-    -- configure python server
     lspconfig["pyright"].setup({
       capabilities = capabilities,
       on_attach = on_attach,
@@ -116,11 +110,10 @@ return {
       },
     })
 
-    -- configure lua server (with special settings)
     lspconfig["lua_ls"].setup({
       capabilities = capabilities,
       on_attach = on_attach,
-      settings = { -- custom settings for lua
+      settings = {
         Lua = {
           -- make the language server recognize "vim" global
           diagnostics = {
