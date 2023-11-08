@@ -4,4 +4,5 @@ return {
   'lukas-reineke/indent-blankline.nvim',
   'nvim-treesitter/nvim-treesitter-context',
   'christoomey/vim-tmux-navigator',
+  { "folke/neodev.nvim", opts = {} },
 }
