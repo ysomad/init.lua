@@ -96,12 +96,13 @@ return {
             useany = true,
           },
           codelenses = {
-            gc_details = true,
             generate = true,
             run_govulncheck = true,
-            test = true,
             tidy = true,
             upgrade_dependency = true,
+          },
+          hints = {
+            constantValues = true
           },
           staticcheck = true,
           gofumpt = true,
