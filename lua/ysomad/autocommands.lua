@@ -3,6 +3,7 @@ local autocmd = vim.api.nvim_create_autocmd
 
 local ysomad_group = augroup('ysomad', {})
 local yank_group = augroup('HighlightYank', {})
+local statusline_group = augroup('StatusLine', {})
 
 -- highlight on yank
 autocmd('TextYankPost', {
@@ -59,4 +60,11 @@ autocmd('BufWritePre', {
     end
     vim.lsp.buf.format({async = false})
   end
+})
+
+-- custom statusline
+autocmd({"WinEnter", "BufEnter"}, {
+  group = statusline_group,
+  pattern = "*",
+  command = [[setlocal statusline=%!v:lua.require('ysomad.statusline').setup()]]
 })

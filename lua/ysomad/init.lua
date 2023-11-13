@@ -2,4 +2,4 @@ require('ysomad.options')
 require('ysomad.keymaps')
 require('ysomad.autocommands')
 require('ysomad.lazy')
-
+-- require('ysomad.statusline')
