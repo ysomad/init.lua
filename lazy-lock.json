@@ -17,7 +17,7 @@
   "neodev.nvim": { "branch": "main", "commit": "f93a984ee75ba6d532d85419619cc6e91d954ee9" },
   "neotest": { "branch": "master", "commit": "009328955066ae6c170d24bb0de5f168d8760ff8" },
   "neotest-go": { "branch": "main", "commit": "1a15e1136db43775214a3e7a598f8930c29c94b7" },
-  "no-clown-fiesta.nvim": { "branch": "master", "commit": "cba991db027d696d99b15e6d3ea6f29f59ad2963" },
+  "no-clown-fiesta.nvim": { "branch": "master", "commit": "ecf3e186d336e03b5ce7ed4e8f7f72ad983947df" },
   "nvim-cmp": { "branch": "main", "commit": "0b751f6beef40fd47375eaf53d3057e0bfa317e4" },
   "nvim-colorizer.lua": { "branch": "master", "commit": "dde3084106a70b9a79d48f426f6d6fec6fd203f7" },
   "nvim-dap": { "branch": "master", "commit": "9d81c11fd185a131f81841e64941859305f6c42d" },
