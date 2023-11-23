@@ -1,7 +1,17 @@
 return {
-  "olexsmir/gopher.nvim",
-  config = true,
+  "ysomad/gopher.nvim",
+  branch = "develop",
   build = function ()
     vim.cmd(':GoInstallDeps')
-  end
+  end,
+  config = function ()
+    require("gopher").setup({
+      gotests = {
+        tag = "@develop",
+        template = "testify",
+        named = true
+      }
+    })
+  end,
 }
+
