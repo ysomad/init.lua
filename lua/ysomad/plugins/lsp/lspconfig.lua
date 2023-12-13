@@ -1,3 +1,11 @@
+local diagnostic_goto = function(next, severity)
+  local go = next and vim.diagnostic.goto_next or vim.diagnostic.goto_prev
+  severity = severity and vim.diagnostic.severity[severity] or nil
+  return function()
+    go({ severity = severity })
+  end
+end
+
 return {
   "neovim/nvim-lspconfig",
   event = { "BufReadPre", "BufNewFile" },
@@ -9,7 +17,7 @@ return {
     local cmp_nvim_lsp = require("cmp_nvim_lsp")
 
     local opts = { noremap = true, silent = true }
-    local on_attach = function(client, bufnr)
+    local on_attach = function(_, bufnr)
       opts.buffer = bufnr
 
       local builtin = require("telescope.builtin")
@@ -41,11 +49,23 @@ return {
       opts.desc = "Show line diagnostics"
       vim.keymap.set("n", "<leader>d", vim.diagnostic.open_float, opts) -- show diagnostics for line
 
-      opts.desc = "Go to previous diagnostic"
+      opts.desc = "Prev diagnostic"
       vim.keymap.set("n", "[d", vim.diagnostic.goto_prev, opts) -- jump to previous diagnostic in buffer
 
-      opts.desc = "Go to next diagnostic"
+      opts.desc = "Next diagnostic"
       vim.keymap.set("n", "]d", vim.diagnostic.goto_next, opts) -- jump to next diagnostic in buffer
+
+      opts.desc = "Next error"
+      vim.keymap.set("n", "]e", diagnostic_goto(true, "ERROR"), opts)
+
+      opts.desc = "Prev error"
+      vim.keymap.set("n", "[e", diagnostic_goto(false, "ERROR"), opts)
+
+      opts.desc = "Next warning"
+      vim.keymap.set("n", "]w", diagnostic_goto(true, "WARN"), opts)
+
+      opts.desc = "Prev warning"
+      vim.keymap.set("n", "[w", diagnostic_goto(false, "WARN"), opts)
 
       opts.desc = "Show documentation for what is under cursor"
       vim.keymap.set("n", "K", vim.lsp.buf.hover, opts) -- show documentation for what is under cursor

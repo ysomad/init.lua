@@ -27,7 +27,9 @@ return {
 
     vim.keymap.set('n', '<leader>ff', builtin.find_files, { desc = "Fuzzy find files" })
     vim.keymap.set('n', '<C-p>', builtin.git_files, { desc = "Fuzzy find git files" })
-    vim.keymap.set('n', '<leader>fb', builtin.buffers, { desc = "List opened buffers" })
+    vim.keymap.set('n', '<leader>fb', function()
+      builtin.buffers({sort_mru=true, ignore_current_buffer=true})
+    end, { desc = "List opened buffers" })
     vim.keymap.set('n', '<leader>fg', function()
       builtin.grep_string({ search = vim.fn.input('Grep > ') });
     end, { desc = "Grep string" })
