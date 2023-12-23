@@ -32,12 +32,31 @@ local function lsp()
   return table.concat({errors, warnings, hints, info})
 end
 
+local function filepath()
+  local fpath = vim.fn.fnamemodify(vim.fn.expand "%", ":~:.:h")
+  if fpath == "" or fpath == "." then
+      return " "
+  end
+
+  return string.format(" %%<%s/", fpath)
+end
+
+local function filename()
+  local fname = vim.fn.expand "%:t"
+  if fname == "" then
+      return ""
+  end
+  return table.concat({fname, " "})
+end
+
 M = {}
 
 function M.setup()
   return table.concat({
     "%#Statusline#",
     "%#Normal# ",
+    filepath(),
+    filename(),
     lsp(),
     "%=%#StatusLineExtra#",
     vim.bo.filetype,
