@@ -1,30 +1,35 @@
-vim.opt.nu = true
-vim.opt.relativenumber = true
+local opt = vim.opt -- as a shorthand
 
-vim.opt.tabstop = 4
-vim.opt.softtabstop = 4
-vim.opt.shiftwidth = 4
-vim.opt.expandtab = true
+-- disable the startup splash screen
+opt.shortmess:append("I")
 
-vim.opt.smartindent = true
-vim.opt.wrap = false
+opt.nu = true
+opt.relativenumber = true
 
-vim.opt.swapfile = false
-vim.opt.backup = false
-vim.opt.undodir = os.getenv('HOME') .. '/.vim/undodir'
-vim.opt.undofile = true
+opt.tabstop = 4
+opt.softtabstop = 4
+opt.shiftwidth = 4
+opt.expandtab = true
 
-vim.opt.hlsearch = false
-vim.opt.incsearch = true
+opt.smartindent = true
+opt.wrap = false
 
-vim.opt.termguicolors = true
-vim.opt.cursorline = true
+opt.swapfile = false
+opt.backup = false
+opt.undodir = os.getenv('HOME') .. '/.vim/undodir'
+opt.undofile = true
 
-vim.opt.scrolloff = 8
-vim.opt.signcolumn = 'yes'
-vim.opt.isfname:append('@-@')
+opt.hlsearch = false
+opt.incsearch = true
 
-vim.opt.updatetime = 50
-vim.opt.colorcolumn = '120'
+opt.termguicolors = true
+opt.cursorline = true
+
+opt.scrolloff = 8
+opt.signcolumn = 'yes'
+opt.isfname:append('@-@')
+
+opt.updatetime = 50
+opt.colorcolumn = '120'
 
 vim.g.mapleader = ' '
