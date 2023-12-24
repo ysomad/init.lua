@@ -111,7 +111,6 @@ return {
             unusedvariable = true,
             unusedwrite = true,
             fieldalignment = true,
-            shadow = true,
             nilness = true,
             useany = true,
           },
