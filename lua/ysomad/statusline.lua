@@ -17,19 +17,19 @@ local function lsp()
   local info = ""
 
   if count["errors"] ~= 0 then
-    errors = table.concat({" E:", count["errors"]})
+    errors = "E:" .. count["errors"]
   end
   if count["warnings"] ~= 0 then
-    warnings = table.concat({" W:", count["warnings"]})
+    warnings = " W:" .. count["warnings"]
   end
   if count["hints"] ~= 0 then
-    hints = table.concat({" H:", count["hints"]})
+    hints = " H:" .. count["hints"]
   end
   if count["info"] ~= 0 then
-    info = table.concat({" I:", count["info"]})
+    info = " I:" .. count["info"]
   end
 
-  return table.concat({errors, warnings, hints, info})
+  return errors .. warnings .. hints .. info
 end
 
 local function filepath()
@@ -46,7 +46,7 @@ local function filename()
   if fname == "" then
       return ""
   end
-  return table.concat({fname, " "})
+  return fname .. " "
 end
 
 M = {}
