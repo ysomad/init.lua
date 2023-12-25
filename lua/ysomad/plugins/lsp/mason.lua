@@ -26,7 +26,10 @@ return {
         "isort", -- python formatter
         "black", -- python formatter
         "pylint", -- python linter
+
         "gofumpt", -- go better gofmt
+        { "gotests", version = "develop" }, -- go tests codegen
+        "golangci-lint",
       }
     })
   end
