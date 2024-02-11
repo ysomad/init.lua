@@ -1,5 +1,5 @@
 return {
-  "ysomad/gopher.nvim",
+  "olexsmir/gopher.nvim",
   branch = "develop",
   config = function ()
     require("gopher").setup({
