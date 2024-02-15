@@ -21,6 +21,16 @@ return {
           },
         },
       },
+      pickers = {
+        buffers = {
+          sort_mru = true,
+          mappings = {
+            i = {
+             ["<C-d>"] = "delete_buffer",
+            }
+          }
+        }
+      }
     })
 
     telescope.load_extension("fzf")
