@@ -2,7 +2,8 @@ return {
   "rcarriga/nvim-dap-ui",
   dependencies = {
     "mfussenegger/nvim-dap",
-    "leoluz/nvim-dap-go"
+    "leoluz/nvim-dap-go",
+    "nvim-neotest/nvim-nio"
   },
   config = function ()
     local dap = require("dap")

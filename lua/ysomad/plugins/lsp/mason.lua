@@ -28,7 +28,7 @@ return {
         "pylint", -- python linter
 
         "gofumpt", -- go better gofmt
-        { "gotests", version = "develop" }, -- go tests codegen
+        -- { "gotests", branch = "develop" }, -- go tests codegen
         "golangci-lint",
       }
     })
