@@ -49,11 +49,12 @@ return {
       opts.desc = "Show line diagnostics"
       vim.keymap.set("n", "<leader>d", vim.diagnostic.open_float, opts) -- show diagnostics for line
 
-      opts.desc = "Prev diagnostic"
-      vim.keymap.set("n", "[d", vim.diagnostic.goto_prev, opts) -- jump to previous diagnostic in buffer
-
-      opts.desc = "Next diagnostic"
-      vim.keymap.set("n", "]d", vim.diagnostic.goto_next, opts) -- jump to next diagnostic in buffer
+      -- default keymaps from nvim 0.10
+      -- opts.desc = "Prev diagnostic"
+      -- vim.keymap.set("n", "[d", vim.diagnostic.goto_prev, opts) -- jump to previous diagnostic in buffer
+      --
+      -- opts.desc = "Next diagnostic"
+      -- vim.keymap.set("n", "]d", vim.diagnostic.goto_next, opts) -- jump to next diagnostic in buffer
 
       opts.desc = "Next error"
       vim.keymap.set("n", "]e", diagnostic_goto(true, "ERROR"), opts)

@@ -63,8 +63,8 @@ autocmd('BufWritePre', {
 })
 
 -- custom statusline
-autocmd({"WinEnter", "BufEnter"}, {
-  group = statusline_group,
-  pattern = "*",
-  command = [[setlocal statusline=%!v:lua.require('ysomad.statusline').setup()]]
-})
+-- autocmd({"WinEnter", "BufEnter"}, {
+--   group = statusline_group,
+--   pattern = "*",
+--   command = [[setlocal statusline=%!v:lua.require('ysomad.statusline').setup()]]
+-- })

@@ -6,7 +6,7 @@ return {
     local harpoon = require("harpoon")
     harpoon:setup()
 
-    vim.keymap.set("n", "<leader>a", function() harpoon:list():append() end, { desc = "Harpoon mark buffer" })
+    vim.keymap.set("n", "<leader>a", function() harpoon:list():add() end, { desc = "Harpoon mark buffer" })
     vim.keymap.set("n", "<C-e>", function() harpoon.ui:toggle_quick_menu(harpoon:list()) end, { desc = "Harpoon marks" })
 
     vim.keymap.set("n", "<leader>h1", function() harpoon:list():select(1) end, { desc = "Harpoon 1" })
