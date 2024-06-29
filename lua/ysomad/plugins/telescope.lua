@@ -46,5 +46,6 @@ return {
     end, { desc = "Grep string" })
     vim.keymap.set('n', '<leader>fh', builtin.help_tags, { desc = "List help tags" })
     vim.keymap.set('n', '<leader>fx', builtin.treesitter, { desc = "List tresitter funcs, vars"})
+    vim.keymap.set('n', '<leader>fr', builtin.lsp_references, { desc = "List references" })
   end
 }
