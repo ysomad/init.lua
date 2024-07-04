@@ -33,3 +33,9 @@ vim.keymap.set('n', 'N', 'Nzzzv')
 -- move between buffers
 vim.keymap.set("n", "[b", "<cmd>bprevious<cr>", { desc = "Prev buffer" })
 vim.keymap.set("n", "]b", "<cmd>bnext<cr>", { desc = "Next buffer" })
+
+-- change split sizes
+vim.keymap.set("n", "<C-Right>", "<c-w>5<", { desc = "Move split to right" })
+vim.keymap.set("n", "<C-Left>", "<c-w>5>", { desc = "Move split to left" })
+vim.keymap.set("n", "<C-Up>", "<C-W>-", { desc = "Make split taller" })
+vim.keymap.set("n", "<C-Down>", "<C-W>+", { desc = "Make split shorter" })

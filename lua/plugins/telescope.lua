@@ -7,11 +7,10 @@ return {
     { "nvim-telescope/telescope-fzf-native.nvim", build = "make" },
   },
   config = function ()
-    local telescope = require("telescope")
     local actions = require("telescope.actions")
-    local builtin = require('telescope.builtin')
+    local data = assert(vim.fn.stdpath "data") --[[@as string]]
 
-    telescope.setup({
+    require("telescope").setup({
       defaults = {
         path_display = { "truncate " },
         mappings = {
@@ -31,21 +30,39 @@ return {
             }
           }
         }
-      }
+      },
+      extensions = {
+        wrap_results = true,
+        fzf = {},
+        history = {
+          path = vim.fs.joinpath(data, "telescope_history.sqlite3"),
+          limit = 100,
+        },
+        ["ui-select"] = {
+          require("telescope.themes").get_dropdown{}
+        },
+      },
     })
 
-    telescope.load_extension("fzf")
+    pcall(require("telescope").load_extension, "fzf")
+    pcall(require("telescope").load_extension, "smart_history")
+    pcall(require("telescope").load_extension, "ui-select")
+
+    local builtin = require('telescope.builtin')
 
     vim.keymap.set('n', '<leader>ff', builtin.find_files, { desc = "Fuzzy find files" })
     vim.keymap.set('n', '<C-p>', builtin.git_files, { desc = "Fuzzy find git files" })
     vim.keymap.set('n', '<leader>fb', function()
       builtin.buffers({sort_mru=true, ignore_current_buffer=true})
     end, { desc = "List opened buffers" })
-    vim.keymap.set('n', '<leader>fg', function()
-      builtin.grep_string({ search = vim.fn.input('Grep > ') });
-    end, { desc = "Grep string" })
+    vim.keymap.set('n', '<leader>fg', builtin.live_grep, { desc = "Grep string" })
     vim.keymap.set('n', '<leader>fh', builtin.help_tags, { desc = "List help tags" })
     vim.keymap.set('n', '<leader>fx', builtin.treesitter, { desc = "List tresitter funcs, vars"})
-    vim.keymap.set('n', '<leader>fr', builtin.lsp_references, { desc = "List references" })
+    vim.keymap.set("n", "<leader>D", builtin.diagnostics, { desc = "List diagnostics" })
+    vim.keymap.set('n', '<leader>/', builtin.current_buffer_fuzzy_find, { desc = "Fuzzy find in current buffer" })
+
+    -- vim.keymap.set('n', '<leader>fr', builtin.lsp_references, { desc = "List references in Telescope" })
+    -- vim.keymap.set("n", "<leader>fi", builtin.lsp_implementations, { desc = "Show implementations in Telescope" })
+    -- vim.keymap.set("n", "<leader>ft", builtin.lsp_type_definitions, { desc = "Show definitions in Telescope" })
   end
 }

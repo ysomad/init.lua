@@ -14,8 +14,8 @@ return {
       require("dap-go").setup()
       require("nvim-dap-virtual-text").setup()
 
-      vim.keymap.set("n", "<leader>b", dap.toggle_breakpoint)
-      vim.keymap.set("n", "<leader>gb", dap.run_to_cursor)
+      vim.keymap.set("n", "<leader>b", dap.toggle_breakpoint, { desc = "Toggle breakpoint" })
+      vim.keymap.set("n", "<leader>gb", dap.run_to_cursor, { desc = "Run to cursor" })
 
       -- Eval var under cursor
       vim.keymap.set("n", "<leader>?", function()

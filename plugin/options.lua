@@ -13,6 +13,8 @@ opt.expandtab = true
 
 opt.smartindent = true
 opt.wrap = false
+opt.smartcase = true
+opt.ignorecase = true
 
 opt.swapfile = false
 opt.backup = false
@@ -31,5 +33,3 @@ opt.isfname:append('@-@')
 
 opt.updatetime = 50
 opt.colorcolumn = '120'
-
-vim.g.mapleader = ' '
