@@ -46,7 +46,6 @@ return {
 
             staticcheck = true,
             gofumpt = true,
-            usePlaceholders = true,
             vulncheck = "Imports",
 
             codelenses = {
@@ -61,7 +60,6 @@ return {
               shadow = true,
             },
 
-            -- does not work =(
             -- hints = {
             --   assignVariableTypes = true,
             --   compositeLiteralFields = true,
