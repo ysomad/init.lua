@@ -8,7 +8,6 @@ return {
   },
   config = function ()
     local actions = require("telescope.actions")
-    local data = assert(vim.fn.stdpath "data") --[[@as string]]
 
     require("telescope").setup({
       defaults = {
@@ -30,17 +29,6 @@ return {
             }
           }
         }
-      },
-      extensions = {
-        wrap_results = true,
-        fzf = {},
-        history = {
-          path = vim.fs.joinpath(data, "telescope_history.sqlite3"),
-          limit = 100,
-        },
-        ["ui-select"] = {
-          require("telescope.themes").get_dropdown{}
-        },
       },
     })
 

@@ -11,6 +11,8 @@ return {
     "saadparwaiz1/cmp_luasnip", -- for autocompletion
   },
   config = function()
+    vim.opt.completeopt = { "menu", "menuone", "noselect" }
+
     local cmp = require("cmp")
     cmp.setup({
       -- sources for autocompletion
@@ -18,6 +20,7 @@ return {
         { name = "nvim_lsp" },
         { name = "path" }, -- file system paths
         { name = "buffer" }, -- text within current buffer
+        { name = "luasnip" },
       }),
       mapping = cmp.mapping.preset.insert({
         ["<C-p>"] = cmp.mapping.select_prev_item({ behavior = cmp.SelectBehavior.Insert }),
@@ -39,9 +42,6 @@ return {
         -- ["<C-Space>"] = cmp.mapping.complete(),
         -- ["<C-e>"] = cmp.mapping.abort(),
       }),
-      completion = {
-        completeopt = "menu,menuone,preview,noselect",
-      },
       snippet = {
         expand = function(args)
           vim.snippet.expand(args.body)
