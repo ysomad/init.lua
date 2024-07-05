@@ -10,17 +10,20 @@ return {
   "neovim/nvim-lspconfig",
   dependencies = {
     "folke/neodev.nvim",
-    "rcarriga/nvim-dap-ui",
+    -- "rcarriga/nvim-dap-ui",
+
     'williamboman/mason.nvim',
     'williamboman/mason-lspconfig.nvim',
     'WhoIsSethDaniel/mason-tool-installer.nvim',
+
+    { "j-hui/fidget.nvim", opts = {} },
   },
   config = function()
     require("neodev").setup({
-      library = {
-        plugins = { "nvim-dap-ui" },
-        types = true,
-      },
+      -- library = {
+      --   plugins = { "nvim-dap-ui" },
+      --   types = true,
+      -- },
     })
 
     -- used to enable autocompletion (assign to every lsp server config)
@@ -43,34 +46,31 @@ return {
 
             staticcheck = true,
             gofumpt = true,
-            semanticTokens = true,
-
-            analyses = {
-              unusedparams = true,
-              unusedvariable = true,
-              unusedwrite = true,
-              fieldalignment = true,
-              nilness = true,
-              useany = true,
-            },
-
-            hints = {
-              assignVariableTypes = true,
-              compositeLiteralFields = true,
-              compositeLiteralTypes = true,
-              constantValues = true,
-              functionTypeParameters = true,
-              parameterNames = true,
-              rangeVariableTypes = true,
-            },
+            usePlaceholders = true,
+            vulncheck = "Imports",
 
             codelenses = {
               generate = true,
               run_govulncheck = true,
-              tidy = true,
-              upgrade_dependency = true,
             },
 
+            analyses = {
+              unusedvariable = true,
+              fieldalignment = true,
+              useany = true,
+              shadow = true,
+            },
+
+            -- does not work =(
+            -- hints = {
+            --   assignVariableTypes = true,
+            --   compositeLiteralFields = true,
+            --   compositeLiteralTypes = true,
+            --   constantValues = true,
+            --   functionTypeParameters = true,
+            --   parameterNames = true,
+            --   rangeVariableTypes = true,
+            -- },
           },
         }
       },
@@ -101,6 +101,9 @@ return {
       'pylint',
       'gofumpt',
       'golangci-lint',
+
+      -- dap
+      'delve',
     }
 
     vim.list_extend(ensure_installed, servers_to_install)
