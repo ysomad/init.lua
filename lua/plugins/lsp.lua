@@ -9,11 +9,20 @@ end
 return {
   "neovim/nvim-lspconfig",
   dependencies = {
+    "folke/neodev.nvim",
+    "rcarriga/nvim-dap-ui",
     'williamboman/mason.nvim',
     'williamboman/mason-lspconfig.nvim',
     'WhoIsSethDaniel/mason-tool-installer.nvim',
   },
   config = function()
+    require("neodev").setup({
+      library = {
+        plugins = { "nvim-dap-ui" },
+        types = true,
+      },
+    })
+
     -- used to enable autocompletion (assign to every lsp server config)
     local capabilities = nil
     if pcall(require, "cmp_nvim_lsp") then

@@ -16,7 +16,6 @@ return {
       -- sources for autocompletion
       sources = cmp.config.sources({
         { name = "nvim_lsp" },
-        { name = "cody" },
         { name = "path" }, -- file system paths
         { name = "buffer" }, -- text within current buffer
       }),
