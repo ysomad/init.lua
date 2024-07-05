@@ -32,10 +32,6 @@ return {
       },
     })
 
-    pcall(require("telescope").load_extension, "fzf")
-    pcall(require("telescope").load_extension, "smart_history")
-    pcall(require("telescope").load_extension, "ui-select")
-
     local builtin = require('telescope.builtin')
 
     vim.keymap.set('n', '<leader>ff', builtin.find_files, { desc = "Fuzzy find files" })
