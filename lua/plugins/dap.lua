@@ -7,8 +7,8 @@ return {
       "theHamsta/nvim-dap-virtual-text",
     },
     config = function()
-      local dap = require "dap"
-      local ui = require "dapui"
+      local dap = require("dap")
+      local ui = require("dapui")
 
       require("dapui").setup()
       require("dap-go").setup()
