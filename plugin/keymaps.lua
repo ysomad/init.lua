@@ -1,5 +1,10 @@
 -- utils
-vim.keymap.set("n", "<leader>s", [[:%s/\<<C-r><C-w>\>/<C-r><C-w>/gI<Left><Left><Left>]], { desc = "Rename in curr buffer" })
+vim.keymap.set(
+	"n",
+	"<leader>s",
+	[[:%s/\<<C-r><C-w>\>/<C-r><C-w>/gI<Left><Left><Left>]],
+	{ desc = "Rename in curr buffer" }
+)
 vim.keymap.set("n", "<leader>x", "<cmd>!chmod +x %<CR>", { desc = "chmod +x curr file" })
 vim.keymap.set("n", "<leader>pv", vim.cmd.Ex, { desc = "Open netrw" })
 
@@ -10,25 +15,25 @@ vim.keymap.set({ "n", "v" }, "<leader>y", [["+y]], { desc = "Yank into system cl
 vim.keymap.set("n", "<leader>Y", [["+Y]], { desc = "Yank curr line into system clipboard" })
 
 -- better indenting
-vim.keymap.set('v', '<', '<gv', { desc = "Indent v-block to right" })
-vim.keymap.set('v', '>', '>gv', { desc = "Indent v-block to left" })
+vim.keymap.set("v", "<", "<gv", { desc = "Indent v-block to right" })
+vim.keymap.set("v", ">", ">gv", { desc = "Indent v-block to left" })
 
 -- disable Q
-vim.keymap.set('n', 'Q', '<nop>')
+vim.keymap.set("n", "Q", "<nop>")
 
 -- disable arrows
-vim.keymap.set({ 'n', 'i' }, '<up>', '')
-vim.keymap.set({ 'n', 'i' }, '<down>', '')
-vim.keymap.set({ 'n', 'i' }, '<left>', '')
-vim.keymap.set({ 'n', 'i' }, '<right>', '')
+vim.keymap.set({ "n", "i" }, "<up>", "")
+vim.keymap.set({ "n", "i" }, "<down>", "")
+vim.keymap.set({ "n", "i" }, "<left>", "")
+vim.keymap.set({ "n", "i" }, "<right>", "")
 
 -- center screen on Ctrl+u, Ctrl+d moves
-vim.keymap.set('n', '<C-d>', '<C-d>zz')
-vim.keymap.set('n', '<C-u>', '<C-u>zz')
+vim.keymap.set("n", "<C-d>", "<C-d>zz")
+vim.keymap.set("n", "<C-u>", "<C-u>zz")
 
 -- center screen on next
-vim.keymap.set('n', 'n', 'nzzzv')
-vim.keymap.set('n', 'N', 'Nzzzv')
+vim.keymap.set("n", "n", "nzzzv")
+vim.keymap.set("n", "N", "Nzzzv")
 
 -- move between buffers
 vim.keymap.set("n", "[b", "<cmd>bprevious<cr>", { desc = "Prev buffer" })

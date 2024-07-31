@@ -18,7 +18,7 @@ opt.ignorecase = true
 
 opt.swapfile = false
 opt.backup = false
-opt.undodir = os.getenv('HOME') .. '/.vim/undodir'
+opt.undodir = os.getenv("HOME") .. "/.vim/undodir"
 opt.undofile = true
 
 opt.hlsearch = false
@@ -28,8 +28,8 @@ opt.termguicolors = true
 opt.cursorline = true
 
 opt.scrolloff = 8
-opt.signcolumn = 'yes'
-opt.isfname:append('@-@')
+opt.signcolumn = "yes"
+opt.isfname:append("@-@")
 
 opt.updatetime = 50
-opt.colorcolumn = '120'
+opt.colorcolumn = "120"
