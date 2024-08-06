@@ -43,6 +43,7 @@ return {
 				settings = {
 					gopls = {
 						directoryFilters = { "-.git", "-node_modules" },
+						buildFlags = { "-tags=integration", "-tags=migrate" },
 
 						staticcheck = true,
 						gofumpt = true,
