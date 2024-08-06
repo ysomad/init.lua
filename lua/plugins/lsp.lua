@@ -100,6 +100,7 @@ return {
 			"tsserver",
 			"dockerls",
 			"golangci_lint_ls",
+			"docker_compose_language_service",
 
 			-- formatters
 			"stylua", -- lua
@@ -107,8 +108,8 @@ return {
 			"isort", -- python
 			"taplo", -- toml
 			"yamlfix", -- yaml
-			"gofumpt",
-			"golines",
+			"gofumpt", -- go
+			"goimports", -- go
 
 			-- cli
 			"golangci-lint",
