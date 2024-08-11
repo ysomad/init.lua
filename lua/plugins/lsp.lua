@@ -39,6 +39,7 @@ return {
 			lua_ls = true,
 			pyright = true,
 			tsserver = true,
+			yamlls = true,
 			gopls = {
 				settings = {
 					gopls = {
@@ -101,6 +102,7 @@ return {
 			"dockerls",
 			"golangci_lint_ls",
 			"docker_compose_language_service",
+			"yamlls",
 
 			-- formatters
 			"stylua", -- lua
