@@ -36,10 +36,12 @@ return {
 
 		local servers = {
 			bashls = true,
+			yamlls = true,
 			lua_ls = true,
 			pyright = true,
 			tsserver = true,
-			yamlls = true,
+			dockerls = true,
+			docker_compose_language_service = true,
 			gopls = {
 				settings = {
 					gopls = {
@@ -95,14 +97,14 @@ return {
 		local ensure_installed = {
 			-- servers
 			"bashls",
+			"yamlls",
 			"lua_ls",
 			"pyright",
-			"gopls",
 			"tsserver",
-			"dockerls",
+			"gopls",
 			"golangci_lint_ls",
+			"dockerls",
 			"docker_compose_language_service",
-			"yamlls",
 
 			-- formatters
 			"stylua", -- lua
