@@ -39,7 +39,7 @@ return {
 			yamlls = true,
 			lua_ls = true,
 			pyright = true,
-			tsserver = true,
+			ts_ls = true,
 			dockerls = true,
 			docker_compose_language_service = true,
 			gopls = {
@@ -100,7 +100,7 @@ return {
 			"yamlls",
 			"lua_ls",
 			"pyright",
-			"tsserver",
+			"ts_ls",
 			"gopls",
 			"golangci_lint_ls",
 			"dockerls",

@@ -44,3 +44,7 @@ vim.keymap.set("n", "<C-Left>", "<c-w>5<", { desc = "Move split to left" })
 vim.keymap.set("n", "<C-Right>", "<c-w>5>", { desc = "Move split to right" })
 vim.keymap.set("n", "<C-Up>", "<C-W>-", { desc = "Make split taller" })
 vim.keymap.set("n", "<C-Down>", "<C-W>+", { desc = "Make split shorter" })
+
+-- go specific keymaps
+vim.keymap.set("n", "<leader>ee", 'oif err != nil {<CR>}<Esc>Oreturn fmt.Errorf(": %w", err)<Esc>F:i')
+vim.keymap.set("n", "<leader>en", 'oif err != nil {<CR>}<Esc>Oreturn nil, fmt.Errorf(": %w", err)<Esc>F:i')
