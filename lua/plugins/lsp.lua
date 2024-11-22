@@ -42,6 +42,7 @@ return {
 			ts_ls = true,
 			dockerls = true,
 			docker_compose_language_service = true,
+			rust_analyzer = true,
 			gopls = {
 				settings = {
 					gopls = {
