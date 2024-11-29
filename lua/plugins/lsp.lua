@@ -51,7 +51,6 @@ return {
 
 						staticcheck = true,
 						gofumpt = true,
-						vulncheck = "Imports",
 
 						codelenses = {
 							generate = true,
@@ -60,6 +59,7 @@ return {
 
 						analyses = {
 							unusedvariable = true,
+							unusedparams = true,
 							fieldalignment = false,
 							useany = true,
 						},
