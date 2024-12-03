@@ -5,13 +5,20 @@ return {
 	config = function()
 		require("nvim-treesitter.configs").setup({
 			ensure_installed = {
-				"json",
 				"yaml",
+				"toml",
 				"bash",
 				"dockerfile",
 				"vimdoc",
 				"vim",
+				"comment",
+
 				"go",
+				"gotmpl",
+				"gomod",
+				"gowork",
+				"gosum",
+
 				"lua",
 				"python",
 				"sql",

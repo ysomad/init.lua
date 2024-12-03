@@ -115,6 +115,8 @@ return {
 			"yamlfix", -- yaml
 			"gofumpt", -- go
 			"goimports", -- go
+			"beautysh", -- bash
+			"buf",
 
 			-- cli
 			"golangci-lint",
