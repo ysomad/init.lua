@@ -15,6 +15,7 @@ return {
 		"williamboman/mason.nvim",
 		"williamboman/mason-lspconfig.nvim",
 		"WhoIsSethDaniel/mason-tool-installer.nvim",
+		"saghen/blink.cmp",
 
 		{ "j-hui/fidget.nvim", opts = {} },
 	},
@@ -27,12 +28,8 @@ return {
 		})
 
 		-- used to enable autocompletion (assign to every lsp server config)
-		local capabilities = nil
-		if pcall(require, "cmp_nvim_lsp") then
-			capabilities = require("cmp_nvim_lsp").default_capabilities()
-		end
-
 		local lspconfig = require("lspconfig")
+		local capabilities = require("blink.cmp").get_lsp_capabilities()
 
 		local servers = {
 			bashls = true,

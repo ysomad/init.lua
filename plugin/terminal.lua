@@ -26,5 +26,5 @@ end, { desc = "Open terminal in hsplit" })
 
 -- example of sending commands to nvim term
 vim.keymap.set("n", "<leader>example", function()
-	vim.fn.chansend(job_id, { "la\r\n" })
+	vim.fn.chansend(job_id, { "echo HELLO WORLD\r\n" })
 end)
