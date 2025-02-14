@@ -59,7 +59,7 @@ return {
 						analyses = {
 							unusedvariable = true,
 							unusedparams = true,
-							fieldalignment = false,
+							fieldalignment = false, -- DEPRECATED
 							useany = true,
 						},
 					},
