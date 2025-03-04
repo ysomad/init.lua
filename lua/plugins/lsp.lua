@@ -37,7 +37,17 @@ return {
 			bashls = true,
 			yamlls = true,
 			lua_ls = true,
-			pyright = true,
+			pyright = {
+				settings = {
+					python = {
+						analysis = {
+							diagnosticSeverityOverrides = {
+								["reportOptionalMemberAccess"] = "none",
+							},
+						},
+					},
+				},
+			},
 			ts_ls = true,
 			dockerls = true,
 			docker_compose_language_service = true,
