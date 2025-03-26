@@ -82,9 +82,11 @@ return {
 					command = {
 						"golangci-lint",
 						"run",
-						"--out-format",
-						"json",
-						"--issues-exit-code=1",
+						"--output.json.path",
+						"stdout",
+						"--show-stats=false",
+						"--issues-exit-code",
+						"1",
 					},
 				},
 				settings = {
@@ -123,14 +125,13 @@ return {
 			"taplo", -- toml
 			"yamlfix", -- yaml
 			"gofumpt", -- go
-			"goimports", -- go
+			"gci", -- go
 			"beautysh", -- bash
 			"buf",
 
 			-- cli
-			"golangci-lint",
 			"delve", -- debug
-			{ "gotests", branch = "develop" },
+			"gotests",
 		}
 
 		vim.list_extend(ensure_installed, servers_to_install)
