@@ -11,7 +11,7 @@ return {
 			lua = { "stylua" },
 			proto = { "buf" },
 			python = { "isort", "black" },
-			go = { "gci", "gofumpt" },
+			go = { "goimports", "gci", "gofumpt" },
 			sql = { "pg_format" },
 		},
 		formatters = {
