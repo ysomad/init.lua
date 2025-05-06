@@ -55,7 +55,7 @@ return {
 			gopls = {
 				settings = {
 					gopls = {
-						directoryFilters = { "-.git", "-node_modules" },
+						directoryFilters = { "-.git", "-node_modules", "-**/go/pkg/mod" },
 						buildFlags = { "-tags=integration", "-tags=migrate" },
 
 						staticcheck = true,

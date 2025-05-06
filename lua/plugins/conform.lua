@@ -46,7 +46,7 @@ return {
 				return
 			else
 				return {
-					timeout_ms = 1500,
+					timeout_ms = 3000,
 					lsp_fallback = true,
 				}
 			end
