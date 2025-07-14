@@ -26,12 +26,6 @@ return {
 					"-s",
 					"default",
 					"-s",
-					"blank",
-					"-s",
-					"dot",
-					"-s",
-					"alias",
-					"-s",
 					"localModule",
 					"--skip-generated",
 					"--skip-vendor",
@@ -46,7 +40,7 @@ return {
 				return
 			else
 				return {
-					timeout_ms = 3000,
+					timeout_ms = 7000,
 					lsp_fallback = true,
 				}
 			end
