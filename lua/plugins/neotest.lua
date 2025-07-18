@@ -2,22 +2,19 @@ return {
 	"nvim-neotest/neotest",
 	event = "LspAttach",
 	dependencies = {
+		"nvim-neotest/nvim-nio",
 		"nvim-treesitter/nvim-treesitter",
 		"nvim-lua/plenary.nvim",
 		"antoinemadec/FixCursorHold.nvim",
-		"nvim-neotest/neotest-go",
+		{ "fredrikaverpil/neotest-golang", version = "*" },
 	},
 	config = function()
 		local neotest = require("neotest")
+		local neotest_golang_opts = {}
 
 		neotest.setup({
 			adapters = {
-				require("neotest-go")({
-					experimental = {
-						test_table = true,
-					},
-					args = { "-v", "-count=1", "-timeout=60s" },
-				}),
+				require("neotest-golang")(neotest_golang_opts),
 			},
 		})
 
