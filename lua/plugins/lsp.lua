@@ -1,8 +1,12 @@
 local diagnostic_goto = function(next, severity)
-	local go = next and vim.diagnostic.goto_next or vim.diagnostic.goto_prev
 	severity = severity and vim.diagnostic.severity[severity] or nil
+
 	return function()
-		go({ severity = severity })
+		vim.diagnostic.jump({
+			count = next and 1 or -1,
+			float = true,
+			severity = severity,
+		})
 	end
 end
 
@@ -10,26 +14,15 @@ return {
 	"neovim/nvim-lspconfig",
 	dependencies = {
 		"folke/neodev.nvim",
-		-- "rcarriga/nvim-dap-ui",
 
 		"williamboman/mason.nvim",
 		"williamboman/mason-lspconfig.nvim",
 
 		{ "j-hui/fidget.nvim", opts = {} },
+		"saghen/blink.cmp",
 	},
 	config = function()
-		require("neodev").setup({
-			-- library = {
-			--   plugins = { "nvim-dap-ui" },
-			--   types = true,
-			-- },
-		})
-
-		-- used to enable autocompletion (assign to every lsp server config)
-		local capabilities = nil
-		if pcall(require, "cmp_nvim_lsp") then
-			capabilities = require("cmp_nvim_lsp").default_capabilities()
-		end
+		require("neodev").setup({})
 
 		local lspconfig = require("lspconfig")
 
@@ -37,17 +30,7 @@ return {
 			bashls = true,
 			yamlls = true,
 			lua_ls = true,
-			pyright = {
-				settings = {
-					python = {
-						analysis = {
-							diagnosticSeverityOverrides = {
-								["reportOptionalMemberAccess"] = "none",
-							},
-						},
-					},
-				},
-			},
+			pyright = true,
 			ts_ls = true,
 			dockerls = true,
 			docker_compose_language_service = true,
@@ -140,6 +123,9 @@ return {
 			if config == true then
 				config = {}
 			end
+
+			local capabilities = require("blink.cmp").get_lsp_capabilities(config.capabilities)
+
 			config = vim.tbl_deep_extend("force", {}, {
 				capabilities = capabilities,
 			}, config)

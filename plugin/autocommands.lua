@@ -35,7 +35,7 @@ autocmd("BufEnter", {
 
 -- 2 spaces for selected filetypes
 autocmd("FileType", {
-	pattern = "xml,html,xhtml,css,scss,javascript,yaml,htmljinja,lua,typescript,tsx,proto",
+	pattern = "xml,html,xhtml,css,scss,javascript,yaml,htmljinja,lua,typescript,tsx,proto,json",
 	callback = function()
 		vim.opt_local.shiftwidth = 2
 		vim.opt_local.tabstop = 2
