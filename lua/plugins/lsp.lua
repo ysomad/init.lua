@@ -35,6 +35,7 @@ return {
 			dockerls = true,
 			docker_compose_language_service = true,
 			rust_analyzer = true,
+			kotlin_lsp = true,
 			gopls = {
 				settings = {
 					gopls = {
@@ -88,6 +89,10 @@ return {
 		end, vim.tbl_keys(servers))
 
 		require("mason").setup()
+		require("mason-lspconfig").setup({
+			ensure_installed = servers_to_install,
+			automatic_installation = true,
+		})
 
 		local ensure_installed = {
 			-- servers
@@ -100,6 +105,7 @@ return {
 			"golangci_lint_ls",
 			"dockerls",
 			"docker_compose_language_service",
+			"kotlin_lsp",
 
 			-- formatters
 			"stylua", -- lua
