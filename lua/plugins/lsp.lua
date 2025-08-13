@@ -15,8 +15,8 @@ return {
 	dependencies = {
 		"folke/neodev.nvim",
 
-		"williamboman/mason.nvim",
-		"williamboman/mason-lspconfig.nvim",
+		"mason-org/mason.nvim",
+		"mason-org/mason-lspconfig.nvim",
 
 		{ "j-hui/fidget.nvim", opts = {} },
 		"saghen/blink.cmp",
@@ -90,8 +90,11 @@ return {
 
 		require("mason").setup()
 		require("mason-lspconfig").setup({
-			ensure_installed = servers_to_install,
-			automatic_installation = true,
+			ensure_installed = {},
+			automatic_installation = false,
+			automatic_setup = false,
+			automatic_enable = false,
+			handlers = nil,
 		})
 
 		local ensure_installed = {
@@ -131,6 +134,16 @@ return {
 			end
 
 			local capabilities = require("blink.cmp").get_lsp_capabilities(config.capabilities)
+
+			-- Disable completion for golangci_lint_ls
+			if name == "golangci_lint_ls" then
+				capabilities.completionProvider = nil
+				capabilities.textDocument = vim.tbl_deep_extend("force", capabilities.textDocument or {}, {
+					completion = {
+						dynamicRegistration = false,
+					},
+				})
+			end
 
 			config = vim.tbl_deep_extend("force", {}, {
 				capabilities = capabilities,

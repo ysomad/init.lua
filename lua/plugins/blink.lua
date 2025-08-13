@@ -1,3 +1,4 @@
+-- why I have double completion for every type in golang, ai?
 return {
 	"saghen/blink.cmp",
 	-- optional: provides snippets for the snippet source

@@ -1,8 +1,15 @@
 return {
 	"joshuavial/aider.nvim",
-	opts = {
-		auto_manage_context = false,
-		default_bindings = true,
-		debug = false,
-	},
+	config = function()
+		require("aider").setup({
+			auto_manage_context = false,
+			default_bindings = false,
+			debug = false,
+		})
+
+		vim.keymap.set("n", "<leader>Ao", function()
+			vim.cmd("AiderOpen")
+			vim.cmd("wincmd L")
+		end, { desc = "Open Aider in right vsplit" })
+	end,
 }

@@ -10,7 +10,7 @@ return {
 			toml = { "taplo" },
 			lua = { "stylua" },
 			proto = { "buf" },
-			python = { "isort", "black" },
+			-- python = { "isort", "black" },
 			go = { "goimports", "gci", "gofumpt" },
 			sql = { "pg_format" },
 		},
