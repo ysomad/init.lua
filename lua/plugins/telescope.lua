@@ -45,9 +45,8 @@ return {
 		vim.keymap.set("n", "<leader>fx", builtin.treesitter, { desc = "List tresitter funcs, vars" })
 		vim.keymap.set("n", "<leader>D", builtin.diagnostics, { desc = "List diagnostics" })
 		vim.keymap.set("n", "<leader>/", builtin.current_buffer_fuzzy_find, { desc = "Fuzzy find in current buffer" })
-
-		-- vim.keymap.set("n", "<leader>fr", builtin.lsp_references, { desc = "List references in Telescope" })
-		-- vim.keymap.set("n", "<leader>fi", builtin.lsp_implementations, { desc = "Show implementations in Telescope" })
-		-- vim.keymap.set("n", "<leader>ft", builtin.lsp_type_definitions, { desc = "Show definitions in Telescope" })
+		vim.keymap.set("n", "<leader>fr", builtin.lsp_references, { desc = "List references in Telescope" })
+		vim.keymap.set("n", "<leader>fi", builtin.lsp_implementations, { desc = "Show implementations in Telescope" })
+		vim.keymap.set("n", "<leader>ft", builtin.lsp_type_definitions, { desc = "Show definitions in Telescope" })
 	end,
 }

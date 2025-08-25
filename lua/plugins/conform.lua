@@ -11,27 +11,28 @@ return {
 			lua = { "stylua" },
 			proto = { "buf" },
 			-- python = { "isort", "black" },
-			go = { "goimports", "gci", "gofumpt" },
+			go = { "goimports", "gofumpt" },
 			sql = { "pg_format" },
 		},
 		formatters = {
-			gci = {
-				inherit = false,
-				command = "gci",
-				stdin = false,
-				args = {
-					"write",
-					"-s",
-					"standard",
-					"-s",
-					"default",
-					"-s",
-					"localModule",
-					"--skip-generated",
-					"--skip-vendor",
-					"$FILENAME",
-				},
-			},
+			-- TODO: enable when realize how to make it faster
+			-- gci = {
+			-- 	inherit = false,
+			-- 	command = "gci",
+			-- 	stdin = false,
+			-- 	args = {
+			-- 		"write",
+			-- 		"-s",
+			-- 		"standard",
+			-- 		"-s",
+			-- 		"default",
+			-- 		"-s",
+			-- 		"localModule",
+			-- 		"--skip-generated",
+			-- 		"--skip-vendor",
+			-- 		"$FILENAME",
+			-- 	},
+			-- },
 		},
 		format_on_save = function(bufnr)
 			local bufname = vim.api.nvim_buf_get_name(bufnr)
@@ -40,7 +41,7 @@ return {
 				return
 			else
 				return {
-					timeout_ms = 7000,
+					timeout_ms = 1000,
 					lsp_fallback = true,
 				}
 			end
