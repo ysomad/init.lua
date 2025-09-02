@@ -33,3 +33,5 @@ opt.isfname:append("@-@")
 
 opt.updatetime = 50
 opt.colorcolumn = "120"
+
+opt.winborder = "rounded"

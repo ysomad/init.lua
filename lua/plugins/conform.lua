@@ -10,29 +10,28 @@ return {
 			toml = { "taplo" },
 			lua = { "stylua" },
 			proto = { "buf" },
-			-- python = { "isort", "black" },
-			go = { "goimports", "gofumpt" },
+			python = { "isort", "black" },
+			go = { "gofumpt", "goimports", "gci" },
 			sql = { "pg_format" },
 		},
 		formatters = {
-			-- TODO: enable when realize how to make it faster
-			-- gci = {
-			-- 	inherit = false,
-			-- 	command = "gci",
-			-- 	stdin = false,
-			-- 	args = {
-			-- 		"write",
-			-- 		"-s",
-			-- 		"standard",
-			-- 		"-s",
-			-- 		"default",
-			-- 		"-s",
-			-- 		"localModule",
-			-- 		"--skip-generated",
-			-- 		"--skip-vendor",
-			-- 		"$FILENAME",
-			-- 	},
-			-- },
+			gci = {
+				inherit = false,
+				command = "gci",
+				stdin = false,
+				args = {
+					"write",
+					"-s",
+					"standard",
+					"-s",
+					"default",
+					"-s",
+					"localModule",
+					"--skip-generated",
+					"--skip-vendor",
+					"$FILENAME",
+				},
+			},
 		},
 		format_on_save = function(bufnr)
 			local bufname = vim.api.nvim_buf_get_name(bufnr)
@@ -40,9 +39,10 @@ return {
 			if bufname:match("/gen/") then
 				return
 			else
+				local filetype = vim.bo[bufnr].filetype
 				return {
 					timeout_ms = 1000,
-					lsp_fallback = true,
+					lsp_format = filetype == "go" and "never" or "fallback",
 				}
 			end
 		end,

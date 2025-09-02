@@ -14,12 +14,16 @@ return {
 	"neovim/nvim-lspconfig",
 	dependencies = {
 		"folke/neodev.nvim",
-
 		"mason-org/mason.nvim",
 		"mason-org/mason-lspconfig.nvim",
-
 		{ "j-hui/fidget.nvim", opts = {} },
 		"saghen/blink.cmp",
+		{
+			-- `lazydev` configures Lua LSP for your Neovim config, runtime and plugins
+			-- used for completion, annotations and signatures of Neovim apis
+			"folke/lazydev.nvim",
+			ft = "lua",
+		},
 	},
 	config = function()
 		require("neodev").setup({})
@@ -41,20 +45,40 @@ return {
 					gopls = {
 						directoryFilters = { "-.git", "-node_modules", "-**/go/pkg/mod" },
 						buildFlags = { "-tags=integration", "-tags=migrate" },
-
 						staticcheck = true,
 						gofumpt = true,
-
 						codelenses = {
 							generate = true,
+							gc_details = false,
+							test = false,
+							tidy = true,
 							run_govulncheck = true,
+							upgrade_dependency = true,
 						},
-
 						analyses = {
-							unusedvariable = true,
 							unusedparams = true,
-							fieldalignment = false, -- DEPRECATED
-							useany = true,
+							unreachable = true,
+							unusedwrite = true,
+							shadow = true,
+							S1008 = true, -- simplify returning boolean expression
+							SA5000 = true, -- assignment to nil map
+							SA5007 = true, -- infinite recursion call
+							ST1019 = true, -- importing the same package multiple times
+							SA1000 = true, -- invalid regular expression
+							SA1020 = true, -- using an invalid host:port pair with a net.Listen-related function
+							SA1023 = true, -- modifying the buffer in an io.Writer implementation
+							SA9001 = true, -- defers in range loops may not run when you expect them to
+							ST1013 = true, -- should use constants for HTTP error codes, not magic numbers
+							ST1000 = false, -- Incorrect or missing package comment
+						},
+						hints = {
+							assignVariableTypes = true,
+							compositeLiteralFields = true,
+							compositeLiteralTypes = true,
+							constantValues = true,
+							functionTypeParameters = false,
+							parameterNames = true,
+							rangeVariableTypes = true,
 						},
 					},
 				},
@@ -108,7 +132,7 @@ return {
 			"golangci_lint_ls",
 			"dockerls",
 			"docker_compose_language_service",
-			"kotlin_lsp",
+			"kotlin-lsp",
 
 			-- formatters
 			"stylua", -- lua
