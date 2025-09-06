@@ -1,10 +1,18 @@
+---@type vim.lsp.Config
 return {
 	cmd = { "gopls" },
-	filetypes = { "go", "gomod", "gowork", "gotmpl", "gosum" },
+	filetypes = { "go", "gomod", "gowork", "gotmpl" },
 	root_markers = { "go.mod", "go.work", ".git" },
 	settings = {
 		gopls = {
-			directoryFilters = { "-.git", "-.vscode", "-.idea", "-.vscode-test", "-node_modules", "-**/go/pkg/mod" },
+			directoryFilters = {
+				"-.git",
+				"-**/go/pkg/mod",
+				"-.vscode",
+				"-.idea",
+				"-.vscode-test",
+				"-node_modules",
+			},
 			gofumpt = true,
 			codelenses = {
 				gc_details = false,
@@ -28,9 +36,7 @@ return {
 			analyses = {
 				nilness = true,
 				unusedparams = true,
-				unusedwrite = true,
 				useany = true,
-				unreachable = true,
 				modernize = true,
 				stylecheck = true,
 				appends = true,
@@ -65,7 +71,7 @@ return {
 				nonewvars = true,
 				noresultvalues = true,
 				printf = true,
-				shadow = true,
+				shadow = false,
 				shift = true,
 				sigchanyzer = true,
 				simplifycompositelit = true,
@@ -82,14 +88,12 @@ return {
 				timeformat = true,
 				unmarshal = true,
 				unsafeptr = true,
-				unusedfunc = true,
 				unusedresult = true,
 				waitgroup = true,
 				yield = true,
 				unusedvariable = true,
 				unreachable = true,
 				unusedwrite = true,
-				shadow = true,
 				S1008 = true, -- simplify returning boolean expression
 				SA5000 = true, -- assignment to nil map
 				SA5007 = true, -- infinite recursion call

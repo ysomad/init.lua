@@ -1,6 +1,45 @@
+local goto_diagnostic = function(next, severity)
+	return function()
+		vim.diagnostic.jump({
+			count = next and 1 or -1,
+			float = true,
+			severity = severity and vim.diagnostic.severity[severity] or nil,
+		})
+	end
+end
+
+vim.api.nvim_create_autocmd("LspAttach", {
+	callback = function(event)
+		local map = function(keys, func, desc)
+			vim.keymap.set("n", keys, func, { buffer = event.buf, desc = "LSP: " .. desc })
+		end
+
+		map("gr", vim.lsp.buf.references, "(g)o to (r)eferences")
+		map("gd", vim.lsp.buf.definition, "(g)o to (d)efinition")
+		map("gD", vim.lsp.buf.declaration, "(g)o to (D)eclaration")
+		map("gi", vim.lsp.buf.implementation, "(g)o to (i)mplementation")
+		map("gt", vim.lsp.buf.type_definition, "(g)o to (t)ype definition")
+		map("K", vim.lsp.buf.hover, "show documentation")
+		map("gs", vim.lsp.buf.signature_help, "(g)o to (s)ignature")
+
+		-- actions
+		map("<leader>rn", vim.lsp.buf.rename, "(r)e(n)ame")
+		map("<leader>ca", vim.lsp.buf.code_action, "(c)ode (a)ctions")
+
+		-- diagnostics
+		map("<leader>d", vim.diagnostic.open_float, "show (d)iagnostics")
+		map("]e", goto_diagnostic(true, "ERROR"), "next error")
+		map("[e", goto_diagnostic(false, "ERROR"), "prev error")
+		map("]w", goto_diagnostic(true, "WARN"), "next warning")
+		map("[w", goto_diagnostic(false, "WARN"), "prev warning")
+	end,
+})
+
 vim.lsp.enable({
 	"lua_ls",
+
 	"gopls",
+	"golangci_lint_ls",
 
 	-- "pyright",
 	-- "ts_ls",
@@ -8,8 +47,6 @@ vim.lsp.enable({
 	-- "rust_analyzer",
 	-- "kotlin_lsp",
 
-	-- "golangci_lint_ls",
-	--
 	-- "bashls",
 	-- "yamlls",
 	-- "dockerls",
@@ -35,7 +72,6 @@ vim.diagnostic.config({
 		},
 		numhl = {
 			[vim.diagnostic.severity.ERROR] = "ErrorMsg",
-			[vim.diagnostic.severity.WARN] = "WarningMsg",
 		},
 	},
 })

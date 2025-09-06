@@ -4,7 +4,7 @@ return {
 		options = {
 			component_separators = { left = "", right = "" },
 			section_separators = { left = "", right = "" },
-			icons_enabled = false,
+			icons_enabled = true,
 			always_divide_middle = true,
 		},
 		sections = {
