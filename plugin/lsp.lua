@@ -14,24 +14,23 @@ vim.api.nvim_create_autocmd("LspAttach", {
 			vim.keymap.set("n", keys, func, { buffer = event.buf, desc = "LSP: " .. desc })
 		end
 
-		map("gr", vim.lsp.buf.references, "(g)o to (r)eferences")
-		map("gd", vim.lsp.buf.definition, "(g)o to (d)efinition")
-		map("gD", vim.lsp.buf.declaration, "(g)o to (D)eclaration")
-		map("gi", vim.lsp.buf.implementation, "(g)o to (i)mplementation")
-		map("gt", vim.lsp.buf.type_definition, "(g)o to (t)ype definition")
+		map("gr", vim.lsp.buf.references, "[g]o to [r]eferences")
+		map("gd", vim.lsp.buf.definition, "[g]o to [d]efinition")
+		map("gD", vim.lsp.buf.declaration, "[g]o to [D]eclaration")
+		map("gi", vim.lsp.buf.implementation, "[g]o to [i]mplementation")
+		map("gt", vim.lsp.buf.type_definition, "[g]o to [t]ype definition")
 		map("K", vim.lsp.buf.hover, "show documentation")
-		map("gs", vim.lsp.buf.signature_help, "(g)o to (s)ignature")
 
 		-- actions
-		map("<leader>rn", vim.lsp.buf.rename, "(r)e(n)ame")
-		map("<leader>ca", vim.lsp.buf.code_action, "(c)ode (a)ctions")
+		map("<leader>rn", vim.lsp.buf.rename, "[r]e[n]ame")
+		map("<leader>ca", vim.lsp.buf.code_action, "[c]ode [a]ctions")
 
 		-- diagnostics
 		map("<leader>d", vim.diagnostic.open_float, "show (d)iagnostics")
-		map("]e", goto_diagnostic(true, "ERROR"), "next error")
-		map("[e", goto_diagnostic(false, "ERROR"), "prev error")
-		map("]w", goto_diagnostic(true, "WARN"), "next warning")
-		map("[w", goto_diagnostic(false, "WARN"), "prev warning")
+		map("]e", goto_diagnostic(true, vim.diagnostic.severity.ERROR), "next error")
+		map("[e", goto_diagnostic(false, vim.diagnostic.severity.ERROR), "prev error")
+		map("]w", goto_diagnostic(true, vim.diagnostic.severity.WARN), "next warning")
+		map("[w", goto_diagnostic(false, vim.diagnostic.severity.WARN), "prev warning")
 	end,
 })
 
@@ -54,8 +53,8 @@ vim.lsp.enable({
 })
 
 vim.diagnostic.config({
-	virtual_lines = true,
-	-- virtual_text = true,
+	-- virtual_lines = true,
+	virtual_text = true,
 	underline = true,
 	update_in_insert = false,
 	severity_sort = true,

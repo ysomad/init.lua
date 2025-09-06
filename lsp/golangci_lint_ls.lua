@@ -9,8 +9,7 @@ return {
 			"--output.json.path",
 			"stdout",
 			"--show-stats=false",
-			"--issues-exit-code",
-			"1",
+			"--issues-exit-code=1",
 		},
 	},
 	root_markers = {
