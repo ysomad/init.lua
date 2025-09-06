@@ -1,6 +1,6 @@
 return {
 	"nvim-treesitter/nvim-treesitter",
-	event = { "BufReadPre", "BufNewFile" },
+	event = { "BufReadPost", "BufNewFile" },
 	build = ":TSUpdate",
 	config = function()
 		require("nvim-treesitter.configs").setup({
@@ -12,6 +12,8 @@ return {
 				"vimdoc",
 				"vim",
 				"comment",
+				"html",
+				"regex",
 
 				"go",
 				"gotmpl",
@@ -20,14 +22,20 @@ return {
 				"gosum",
 
 				"lua",
+				"luadoc",
+
 				"python",
 				"sql",
 				"javascript",
 				"typescript",
 				"rust",
 				"markdown",
+				"kotlin",
 			},
-			highlight = { enable = true },
+			highlight = {
+				enable = true,
+				additional_vim_regex_highlighting = false,
+			},
 			indent = { enable = true },
 		})
 	end,

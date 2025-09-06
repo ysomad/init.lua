@@ -11,14 +11,14 @@ return {
 			lua = { "stylua" },
 			proto = { "buf" },
 			python = { "isort", "black" },
-			go = { "gofumpt", "goimports", "gci" },
+			go = { "goimports", "gci", "gofumpt", "golines" },
 			sql = { "pg_format" },
 		},
 		formatters = {
 			gci = {
 				inherit = false,
-				command = "gci",
 				stdin = false,
+				command = "gci",
 				args = {
 					"write",
 					"-s",
@@ -32,19 +32,17 @@ return {
 					"$FILENAME",
 				},
 			},
+			golines = { args = { "-m", "120" } },
 		},
 		format_on_save = function(bufnr)
 			local bufname = vim.api.nvim_buf_get_name(bufnr)
+
 			-- disable formatting for generated files
 			if bufname:match("/gen/") then
 				return
-			else
-				local filetype = vim.bo[bufnr].filetype
-				return {
-					timeout_ms = 1000,
-					lsp_format = filetype == "go" and "never" or "fallback",
-				}
 			end
+
+			return { timeout_ms = 2500, lsp_format = "fallback" }
 		end,
 	},
 }

@@ -1,7 +1,6 @@
 return {
-	{ "echasnovski/mini.nvim", version = false },
+	{ "j-hui/fidget.nvim", opts = {} },
 	"nvim-tree/nvim-web-devicons",
 	"nvim-lua/plenary.nvim",
-	"nvim-treesitter/nvim-treesitter-context",
 	"christoomey/vim-tmux-navigator",
 }
