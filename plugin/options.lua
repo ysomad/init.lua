@@ -29,6 +29,7 @@ opt.cursorline = true
 
 opt.scrolloff = 8
 opt.signcolumn = "yes"
+opt.shada = { "'10", "<0", "s10", "h" }
 opt.isfname:append("@-@")
 
 opt.updatetime = 50

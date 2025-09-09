@@ -1,3 +1,5 @@
+vim.opt_local.expandtab = false
+
 local alt = {}
 
 function alt.is_test_file()
@@ -49,12 +51,12 @@ end
 
 vim.keymap.set("n", "<leader>ta", function()
 	alt.switch()
-end, { desc = "Go alternate" })
+end, { desc = "[t]est [a]lternate" })
 
 vim.keymap.set("n", "<leader>tv", function()
 	alt.switch("vsplit")
-end, { desc = "Go alternate vsplit" })
+end, { desc = "[t]est alternate [v]split" })
 
 vim.keymap.set("n", "<leader>th", function()
 	alt.switch("split")
-end, { desc = "Go alternate hsplit" })
+end, { desc = "[t]est alternate [h]split" })
