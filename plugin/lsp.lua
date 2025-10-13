@@ -40,7 +40,7 @@ vim.lsp.enable({
 	"gopls",
 	"golangci_lint_ls",
 
-	-- "pyright",
+	"pyright",
 	-- "ts_ls",
 
 	-- "rust_analyzer",
