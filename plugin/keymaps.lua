@@ -45,6 +45,10 @@ vim.keymap.set("n", "<C-Right>", "<c-w>5>", { desc = "Move split to right" })
 vim.keymap.set("n", "<C-Up>", "<C-W>-", { desc = "Make split taller" })
 vim.keymap.set("n", "<C-Down>", "<C-W>+", { desc = "Make split shorter" })
 
--- go specific keymaps
-vim.keymap.set("n", "<leader>ee", "oif err != nil {<CR>}<Esc>Oreturn err<Esc>")
-vim.keymap.set("n", "<leader>ef", 'oif err != nil {<CR>}<Esc>Oreturn fmt.Errorf(": %w", err)<Esc>F:i')
+-- Duplicate line and comment first one
+vim.keymap.set(
+	"n",
+	"ycc",
+	'"yy" . v:count1 . "gcc\']p"',
+	{ desc = "Copy line, comment first", remap = true, expr = true }
+)

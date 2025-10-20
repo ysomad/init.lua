@@ -60,3 +60,7 @@ end, { desc = "[t]est alternate [v]split" })
 vim.keymap.set("n", "<leader>th", function()
 	alt.switch("split")
 end, { desc = "[t]est alternate [h]split" })
+
+-- go specific keymaps
+vim.keymap.set("n", "<leader>ee", "oif err != nil {<CR>}<Esc>Oreturn err<Esc>")
+vim.keymap.set("n", "<leader>ef", 'oif err != nil {<CR>}<Esc>Oreturn fmt.Errorf(": %w", err)<Esc>F:i')
