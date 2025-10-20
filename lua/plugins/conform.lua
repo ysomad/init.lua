@@ -5,14 +5,15 @@ return {
 	opts = {
 		notify_no_formatters = false,
 		formatters_by_ft = {
+			go = { "gofumpt", "goimports", "gci", "golines" },
+			python = { "isort", "black" },
+			sql = { "pg_format" },
 			bash = { "beautysh" },
 			yaml = { "yamlfix" },
 			toml = { "taplo" },
 			lua = { "stylua" },
+			nix = { "alejandra" },
 			proto = { "buf" },
-			python = { "isort", "black" },
-			go = { "gofumpt", "goimports", "gci", "golines" },
-			sql = { "pg_format" },
 		},
 		formatters = {
 			gci = {
